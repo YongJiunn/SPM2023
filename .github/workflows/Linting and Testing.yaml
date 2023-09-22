@@ -154,6 +154,7 @@ jobs:
       - name: Create Zipfile archive of Dependencies
         working-directory: sbrb-backend
         run: |
+          ls
           cd venv/Lib/site-packages
           zip -r9 ../../../../api.zip .
 
