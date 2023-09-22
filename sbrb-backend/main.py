@@ -1,12 +1,12 @@
 import uvicorn
 from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
-
+from mangum import Mangum
 from app.database import SessionLocal
 from app.models import Role
 
 app = FastAPI()
-
+handler = Mangum(app)
 
 def get_db():
     db = SessionLocal()
@@ -14,7 +14,6 @@ def get_db():
         yield db
     finally:
         db.close()
-
 
 @app.get("/")
 def index():

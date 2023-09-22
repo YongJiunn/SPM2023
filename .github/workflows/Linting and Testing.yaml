@@ -115,3 +115,55 @@ jobs:
       - name: Run backend tests
         working-directory: sbrb-backend
         run: pytest -v
+
+  backend-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cocde
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install Python Virtual ENV
+        run: pip3 install virtualenv
+
+      - name: Setup virtual environment
+        uses: actions/cache@v4
+        id: cache-venv
+        with:
+          path: venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-venv-
+
+        # Step 5
+      - name: Activate and Install Depencies into Virtual env
+        working-directory: sbrb-backend
+        run: python -m venv venv && source venv/bin/activate &&
+          pip3 install -r requirements.txt
+        if: steps.cache-venv.outputs.cache-hit != 'true'
+      # Step 6
+      - name: Activate venv and Run Test
+        working-directory: sbrb-backend
+        run: . venv/bin/activate && pytest
+
+      # Step 7
+      - name: Create Zipfile archive of Dependencies
+        working-directory: sbrb-backend
+        run: |
+          cd ./venv/lib/site-packages
+          zip -r9 ../../../../api.zip .
+
+      # Step 8
+      - name: Add App to Zip file
+        run: zip -g ../api.zip -r .
+
+      # Step 9
+      - name: Upload zip file artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: api
+          path: api.zip
