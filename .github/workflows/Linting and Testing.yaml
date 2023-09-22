@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: api
-          path: api.zip
+          path: sbrb-backend/api.zip
   backend-cd:
     runs-on: ubuntu-latest
     needs: [backend-ci]
