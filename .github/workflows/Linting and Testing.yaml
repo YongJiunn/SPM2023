@@ -52,11 +52,12 @@ jobs:
         working-directory: sbrb-backend
         run: |
           cd venv/lib/python3.9/site-packages
-          zip -r9 ../../../../../../api.zip .
+          zip -r9 ../../../../../api.zip .
 
       # Step 8
       - name: Add App to Zip file
-        run: zip -g ../../api.zip -r .
+        working-directory: sbrb-backend
+        run: zip -g ../api.zip -r .
 
       # Step 9
       - name: Upload zip file artifact
