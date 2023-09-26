@@ -1,18 +1,12 @@
-from sqlalchemy import create_engine
-from sqlalchemy.engine import URL
 from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy import create_engine
 
-url = URL.create(
-    database="postgres",
-    drivername="postgresql+psycopg2",
-    host="scrum2023.cplyu5olo9jt.ap-southeast-1.rds.amazonaws.com",
-    username="mickeymouse",
-    password="H124f%4blob",
-    port="5432",
-)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False)
+engine = None
 
-engine = create_engine(url)
-
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-Base = declarative_base()
+def initialize_db(url):
+    global SessionLocal, engine
+    engine = create_engine(url, echo=True)
+    # SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    SessionLocal.configure(bind=engine)
+    return engine
