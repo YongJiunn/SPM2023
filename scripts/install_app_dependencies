@@ -1,7 +1,9 @@
 #!/bin/bash
-sudo pip3 install virtualenv
+# sudo pip3 install virtualenv
 cd /home/ec2-user/app/sbrb-backend
-virtualenv environment
-source environment/bin/activate
-sudo apt install postgresql
+# virtualenv environment
+# source environment/bin/activate
+sudo yum update -y
+sudo amazon-linux-extras enable postgresql15
+sudo yum install postgresql-server -y
 sudo pip3 install -r requirements.txt
