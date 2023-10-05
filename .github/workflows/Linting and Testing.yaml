@@ -26,21 +26,21 @@ jobs:
         with:
           python-version: "3.9"
 
-      # - name: Install Python Virtual ENV
-      #   run: pip3 install virtualenv
+      - name: Install Python Virtual ENV
+        run: pip3 install virtualenv
 
-      # - name: Setup virtual environment
-      #   uses: actions/cache@v3
-      #   id: cache-venv
-      #   with:
-      #     path: venv
-      #     key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements*.txt') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-venv-
+      - name: Setup virtual environment
+        uses: actions/cache@v3
+        id: cache-venv
+        with:
+          path: venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-venv-
 
-      # - name: Activate and Install Depencies into Virtual env
-      #   working-directory: sbrb-backend
-      #   run: pip3 install -r requirements.txt
+      - name: Activate and Install Depencies into Virtual env
+        working-directory: sbrb-backend
+        run: pip3 install -r requirements.txt
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
