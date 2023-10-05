@@ -2,5 +2,4 @@
 cd /home/ec2-user/app
 chmod +x scripts/start_server
 sudo pip install supervisor
-
-/home/ubuntu/.local/bin/supervisord -c /home/ec2-user/app/supervisord.conf 
+sudo /home/ubuntu/.local/bin/supervisord -c /home/ec2-user/app/supervisord.conf 
