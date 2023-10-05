@@ -51,7 +51,7 @@ jobs:
 
       - name: Build Application and Run unit Test
         working-directory: sbrb-backend
-        run: python3 app.py & pytest
+        run: python app.py & pytest
         
       # - name: Activate venv and Run Test
       #   working-directory: sbrb-backend

@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /home/ubuntu/SPM2023/sbrb-backend
+cd /home/ec2-user/app
 supervisord -c supervisord.conf
 
