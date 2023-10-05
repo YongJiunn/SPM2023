@@ -1,5 +1,5 @@
 #!/bin/bash
 cd /home/ec2-user/app
 chmod +x scripts/start_server
-/usr/bin/supervisord -c supervisord.conf
+supervisord -c supervisord.conf
 
