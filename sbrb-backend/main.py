@@ -20,7 +20,7 @@ def get_db():
 
 @app.get("/")
 def index():
-    return {"message": "Hello World", "Super": "Saiyan"}
+    return {"message": "Hello World", "Super": "gogo", "mama": "fat"}
 
 
 @app.get("/roles")
