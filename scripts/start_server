@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo pkill -f /home/ubuntu/.local/bin/supervisord 
+# sudo pkill -f /home/ubuntu/.local/bin/supervisord 
 cd /home/ec2-user/app
 chmod +x scripts/start_server
 chmod +w /tmp/supervisord.log

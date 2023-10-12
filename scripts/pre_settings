@@ -14,6 +14,8 @@ sudo supervisorctl stop main.py
 
 sudo pkill -f /home/ubuntu/.local/bin/supervisord 
 
+# Wait for the process to stop gracefully
+sleep 60
 
 # # Start the updated application using Supervisor
 # sudo supervisorctl start main.py
