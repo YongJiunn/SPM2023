@@ -8,7 +8,7 @@ sudo pkill -f /home/ubuntu/.local/bin/supervisord
 sleep 60
 cd /home/ec2-user/app
 # Pull the latest code from the GitHub repository (assuming it's the 'main' branch)
-git pull origin main 
+# git pull origin main 
 chmod +x scripts/start_server
 chmod +w /tmp/supervisord.log
 # sudo pip install supervisor
