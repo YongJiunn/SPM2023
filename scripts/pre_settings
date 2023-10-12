@@ -12,6 +12,8 @@ git pull origin main
 # Stop the Supervisor-managed process (replace 'my-python-program' with the actual program name)
 sudo supervisorctl stop main.py
 
+sudo pkill -f /home/ubuntu/.local/bin/supervisord 
+
 # Wait for the process to stop gracefully
 sleep 5
 
