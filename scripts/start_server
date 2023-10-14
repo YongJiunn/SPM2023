@@ -4,7 +4,7 @@ sudo supervisorctl stop main.py
 
 sudo pkill -f /home/ubuntu/.local/bin/supervisord 
 
-# Wait for the process to stop gracefully
+# Wait for the process to stop gracefully in seconds
 sleep 60
 cd /home/ec2-user/app
 # Pull the latest code from the GitHub repository (assuming it's the 'main' branch)
